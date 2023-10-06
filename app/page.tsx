@@ -20,5 +20,7 @@ export default function Home() {
     ref.current = true;
   }, []);
 
-  return <div>{loading ? <div>Loading...</div> : <UserTable />}</div>;
+  return (
+    <div>{loading ? <div>Loading...</div> : <UserTable store={entities} />}</div>
+  );
 }

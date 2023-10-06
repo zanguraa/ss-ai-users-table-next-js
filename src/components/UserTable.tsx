@@ -8,30 +8,36 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import User from "../../types/type";
 
-const UserTable = () => {
+type Props = {
+  store: User;
+};
+
+const UserTable: React.FC<Props> = ({ store }) => {
   return (
     <div className="container mx-auto px-4">
-      <Table>
-        <TableCaption>A list of your recent invoices.</TableCaption>
+      <Table className="border-2">
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[100px]">Invoice</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead>Method</TableHead>
-            <TableHead className="text-right">Amount</TableHead>
+            <TableHead>ID</TableHead>
+            <TableHead>Name</TableHead>
+            <TableHead>Email</TableHead>
+            <TableHead>City</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          <TableRow>
-            <TableCell className="font-medium">INV001</TableCell>
-            <TableCell>Paid</TableCell>
-            <TableCell>Credit Card</TableCell>
-            <TableCell className="text-right">$250.00</TableCell>
-          </TableRow>
+          {store.map((user) => (
+            <TableRow key={user.id}>
+              <TableCell className="font-medium">{user.id}</TableCell>
+              <TableCell>{user.name}</TableCell>
+              <TableCell>{user.email}</TableCell>
+              <TableCell>{user.address.city}</TableCell>
+              {/* <Modal user={user} /> */}
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
-      Copy
     </div>
   );
 };
