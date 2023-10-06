@@ -3,10 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchUsers } from "../slices/userSlice";
 import { useEffect, useRef } from "react";
 import { AppDispatch, RootState } from "../store/store";
+import { User } from "lucide-react";
+import UserTable from "@/components/UserTable";
 
 export default function Home() {
   const ref = useRef(false);
-  const { entities } = useSelector((state: RootState) => state.user);
+  const { entities, loading } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch<AppDispatch>();
 
   console.log(entities);
@@ -18,5 +20,5 @@ export default function Home() {
     ref.current = true;
   }, []);
 
-  return <div></div>;
+  return <div>{loading ? <div>Loading...</div> : <UserTable />}</div>;
 }

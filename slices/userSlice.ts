@@ -19,13 +19,11 @@ const userSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchUsers.fulfilled, (state, action) => {
+      state.loading = false;
       state.entities.push(...action.payload);
     });
     builder.addCase(fetchUsers.pending, (state, action) => {
       state.loading = true;
-    });
-    builder.addCase(fetchUsers.rejected, (state, action) => {
-      state.loading = false;
     });
   },
 });
