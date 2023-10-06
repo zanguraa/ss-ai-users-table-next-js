@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import {
   Table,
@@ -9,6 +10,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import User from "../../types/type";
+import DeleteModal from "./DeleteModal";
 
 type Props = {
   store: User;
@@ -16,7 +18,7 @@ type Props = {
 
 const UserTable: React.FC<Props> = ({ store }) => {
   return (
-    <div className="container mx-auto px-4">
+    <div>
       <Table className="border-2">
         <TableHeader>
           <TableRow>
@@ -33,7 +35,7 @@ const UserTable: React.FC<Props> = ({ store }) => {
               <TableCell>{user.name}</TableCell>
               <TableCell>{user.email}</TableCell>
               <TableCell>{user.address.city}</TableCell>
-              {/* <Modal user={user} /> */}
+              <DeleteModal store={user} />
             </TableRow>
           ))}
         </TableBody>

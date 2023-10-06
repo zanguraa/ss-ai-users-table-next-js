@@ -21,6 +21,14 @@ export default function Home() {
   }, []);
 
   return (
-    <div>{loading ? <div>Loading...</div> : <UserTable store={entities} />}</div>
+    <div className="container mx-auto px-4 py-10">
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <div>
+          <UserTable store={entities} />
+        </div>
+      )}
+    </div>
   );
 }
