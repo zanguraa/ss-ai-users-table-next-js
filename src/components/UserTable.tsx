@@ -17,6 +17,9 @@ type Props = {
   store: User;
 };
 
+
+
+
 const UserTable: React.FC<Props> = ({ store }) => {
   return (
     <div>
